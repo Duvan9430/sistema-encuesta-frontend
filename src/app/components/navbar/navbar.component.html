@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+  <a
+    [routerLink]="'/'"
+    mat-icon-button
+    class="example-icon"
+    arial-label="Example icon-button with menu icon"
+  >
+    <mat-icon>assignment_turned_in</mat-icon>
+  </a>
+  <span>Portal de encuesta</span>
+  <span class="example-spacer"></span>
+  <a
+    *ngIf = "!isLoggedIn"
+    [routerLink]="'/login'"
+    mat-icon-button
+    class = "example-icon favorite-icon"
+    aria-label = "Example icon-button with heart icon"
+    style="margin-right: 120px"
+
+  >
+    Iniciar sesión
+  </a>
+  <a
+    *ngIf = "!isLoggedIn"
+    [routerLink]="'/signup'"
+    mat-icon-button
+    class="example-icon favorite-icon"
+    style="margin-right: 60px"
+    aria-label="Example icon-button with heart icon"
+
+  >
+    Registrar
+  </a>
+  <a
+    *ngIf = "isLoggedIn"
+    (click) = "logout()"
+    style="margin-right: 50px"
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    Cerrar sesión
+  </a>
+  <button
+    *ngIf = "isLoggedIn && user"
+    mat-button
+    style="margin-right: 10px"
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    {{ user.username }}
+  </button>
+</mat-toolbar>
