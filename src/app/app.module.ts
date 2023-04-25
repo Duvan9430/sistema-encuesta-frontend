@@ -21,7 +21,15 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { HomeComponent } from './pages/home/home.component';
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { LoginComponent } from './pages/login/login.component';
-
+import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+import {MatListModule} from '@angular/material/list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { NgxUiLoaderModule , NgxUiLoaderHttpModule } from "ngx-ui-loader";
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { AddEncuestaComponent } from './pages/admin/add-encuesta/add-encuesta.component';
+import { ViewEncuestaComponent } from './pages/admin/view-encuesta/view-encuesta.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +38,11 @@ import { LoginComponent } from './pages/login/login.component';
     SignupComponent,
     LoginComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    SidebarComponent,
+    WelcomeComponent,
+    AddEncuestaComponent,
+    ViewEncuestaComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +56,15 @@ import { LoginComponent } from './pages/login/login.component';
     MatSnackBarModule,
     MatCardModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true
+    })
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

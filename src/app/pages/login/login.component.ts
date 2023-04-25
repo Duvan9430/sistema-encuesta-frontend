@@ -35,22 +35,37 @@ export class LoginComponent implements OnInit  {
     }
     this.loginService.generateToken(this.loginData).subscribe(
       (data:any) => {
-        console.log(data);
         this.loginService.loginUser(data.token);
         this.loginService.getCurrentUser().subscribe((user:any) => {
           this.loginService.setUser(user);
-          if(!data){
-            //dashboard admin
-            //window.location.href = '/admin';
-            this.router.navigate(['admin']);
+
+          if(this.loginService.getUser() != null){
+            this.router.navigate(['/admin']);
             this.loginService.loginStatusSubjec.next(true);
           }
           else{
             this.loginService.logout();
           }
         })
-      },(error) => {
-        this.snack.open('Detalles inválidos , vuelva a intentar !!','Aceptar',{
+      },(error:any) => {
+        this.snack.open('Detalles inválidos , '+ error.error.message +'','Aceptar',{
+          duration:3000
+        })
+      }
+    )
+  }
+  cambiarEstadoUsuario(data:any){
+    this.loginService.setEstadoUser(data).subscribe(
+      (data:any) => {
+        if(data.bloqueo >= 3){
+          this.snack.open('Intentos registro Usuario , '+ data.bloqueo +'','Aceptar',{
+            duration:3000
+          })
+        }
+
+      },(error:any) => {
+
+        this.snack.open('Detalles inválidos , '+ error.error.message +'','Aceptar',{
           duration:3000
         })
       }

@@ -66,4 +66,7 @@ export class LoginService {
     return this.http.get(`${environment.url}/actual-usuario`);
   }
 
+  public setEstadoUser(loginData:any){
+    return this.http.put(`${environment.url}/usuarios/estado`,loginData);
+  }
 }

@@ -1,0 +1,28 @@
+<mat-card class="mt10" *ngFor = "let e of encuesta">
+  <mat-card-header>
+      <mat-card-title>
+        Numero documento : {{ e.numeroDocumento }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        Email : {{ e.email }}
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+       Comentario:  {{ e.comentarios }}
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        Fecha: {{ e.fechaRespuesta }}
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+       Marca:  {{ e.marcaFavoritaId.nombre }}
+      </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="warn" class="ml10" (click) = "eliminar(e.id)">Eliminar</button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
+<div class="container text-center mt20">
+  <button routerLink="/admin/add-encuesta" mat-raised-button color="primary">Agregar encuesta</button>
+</div>

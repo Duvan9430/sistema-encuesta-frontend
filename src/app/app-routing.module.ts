@@ -5,6 +5,9 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { AdminGuardService } from './services/admin-guard.service';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { AddEncuestaComponent } from './pages/admin/add-encuesta/add-encuesta.component';
+import { ViewEncuestaComponent } from './pages/admin/view-encuesta/view-encuesta.component';
 
 const routes: Routes = [
   {
@@ -17,16 +20,31 @@ const routes: Routes = [
     component : SignupComponent,
     pathMatch : 'full'
   },
+
+
+  {
+    path:'admin',
+    component:DashboardComponent,
+    canActivate:[AdminGuardService],
+    children:[
+      {
+        path : '',
+        component : WelcomeComponent
+      },
+      {
+        path:'encuesta',
+        component:ViewEncuestaComponent
+      },
+      {
+        path:'add-encuesta',
+        component:AddEncuestaComponent
+      },
+    ]
+  },
   {
     path : 'login',
     component : LoginComponent,
     pathMatch : 'full'
-  },
-  {
-    path:'admin',
-    component:DashboardComponent,
-    pathMatch:'full',
-    canActivate:[AdminGuardService]
   }
 ];
 
