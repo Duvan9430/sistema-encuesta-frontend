@@ -52,7 +52,7 @@ export class AddEncuestaComponent implements OnInit {
           },
           fechaRespuesta: new Date()
         }
-        this.router.navigate(['/admin/examenes']);
+        this.router.navigate(['/admin/encuesta']);
       },
       (error) => {
         Swal.fire('Error','Error al guardar la encuesta','error');
